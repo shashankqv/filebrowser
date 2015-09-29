@@ -1,7 +1,7 @@
 import os
 import spwd
 import crypt
-from filebrowser.settings import ROOT_LOGIN_ENABLED 
+from filebrowser.settings import ROOT_LOGIN_ENABLED
 import json
 
 
