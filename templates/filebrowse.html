@@ -20,7 +20,7 @@
 
     {% if dirs.typeo == "dir" %}
         {% if not dirs.ishidden %}
-            <a href="{{dirs.url}}">{{ dirs.value }}/</a> <br>
+            <a href="/filereader/getchildren?dir={{dirs.url}}">{{ dirs.value }}/</a> <br>
         {% endif %}
     {% endif %}
 

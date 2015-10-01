@@ -54,7 +54,6 @@ def loggingin(request):
     return render_to_response('filebrowse.html', {'name': data['name'],
         'children' : childr, 'type' : data['type'], 'complete' : data, 'status' : status},
         context_instance=RequestContext(request))
-    return HttpResponse(data)
 
 
 def parseJson(data):
@@ -77,3 +76,18 @@ def parseJson(data):
         dirlist.append(finaldata)
         print dirlist
     return dirlist
+
+def getchildren(request):
+    if request.method == "GET":
+        print "Called using get method"
+        basedir = request.GET['dir']
+    data1 = path_to_dict_1_level('%s/' % (basedir))
+
+    data = json.loads(data1)
+    childr = parseJson(data1)
+    #childr = json.loads(childr)
+
+
+    return render_to_response('filebrowse.html', {'name': data['name'],
+        'children' : childr, 'type' : data['type'], 'complete' : data},
+        context_instance=RequestContext(request))
