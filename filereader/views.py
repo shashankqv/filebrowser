@@ -40,6 +40,8 @@ def loggingin(request):
         if username is not None and password is not None:
             print "Hey i am present"
             status = login(username,password)
+    if status is not True:
+        return HttpResponse("Login Failed. username Password")
 
     data1 = path_to_dict_1_level('/home/%s/' % (username
         ))
@@ -50,7 +52,7 @@ def loggingin(request):
 
 
     return render_to_response('filebrowse.html', {'name': data['name'],
-        'children' : childr, 'type' : data['type'], 'complete' : data},
+        'children' : childr, 'type' : data['type'], 'complete' : data, 'status' : status},
         context_instance=RequestContext(request))
     return HttpResponse(data)
 
