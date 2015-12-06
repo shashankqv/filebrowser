@@ -5,7 +5,6 @@ from filebrowser.settings import ROOT_LOGIN_ENABLED
 import json
 
 
-
 def login(user, password):
     """Tries to authenticate a user.
     Returns True if the authentication succeeds, else the reason
@@ -30,14 +29,12 @@ def login(user, password):
     return "unknown error"
 
 
-
 def loginvalidate(username):
     if not ROOT_LOGIN_ENABLED and username == "root":
         print "Root Login not allowed"
         return False
     else:
         return True
-
 
 
 def getdirectorylist(basedir):
@@ -48,10 +45,9 @@ def path_to_dict(path):
     d = {'name': os.path.basename(path)}
     if os.path.isdir(path):
         d['type'] = "directory"
-        d['children'] = [path_to_dict(os.path.join(path,x)) for x in os.listdir(path)]
+        d['children'] = [path_to_dict(os.path.join(path, x)) for x in os.listdir(path)]
     else:
         d['type'] = "file"
-    #return json.dumps(d)
     return d
 
 
@@ -68,7 +64,7 @@ def path_to_dict_1_level(path):
     if os.path.isdir(path):
         d['type'] = "directory"
         f = {}
-        d['children'] = [os.path.join(path,x) for x in os.listdir(path)]
+        d['children'] = [os.path.join(path, x) for x in os.listdir(path)]
     else:
         d['type'] = "file"
     return json.dumps(d)
