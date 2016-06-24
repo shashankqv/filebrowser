@@ -1,4 +1,4 @@
-# filebrowser
+# Filebrowser
 
 This is a web application which will use server username / password to login. 
 
